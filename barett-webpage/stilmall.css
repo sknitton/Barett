@@ -91,6 +91,12 @@ body {
     float: left;
     margin-left: 20px;
 }
+
+#title a:link {text-decoration: none; line-height: 0px; color: #000000;}
+#title a:visited {text-decoration: none; line-height: 0px; color: #000000;}
+#title a:hover {text-decoration: none; line-height: 0px; color: #000000;}
+#title a:active {text-decoration: none; line-height: 0px; color: #000000;}
+
 #news {
     float: left;
 }
