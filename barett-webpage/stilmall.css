@@ -21,6 +21,8 @@ body {
     margin-top: -8px;
     background-color: #ffffff;
     float: left;
+    position: fixed;
+    top: 0px
 }
 
 #logga {
@@ -52,6 +54,7 @@ body {
     padding-left: 20px;
     padding-bottom: 15px;
     margin-bottom: 10px;
+    margin-top: 34px;
 }
 
 
@@ -73,6 +76,12 @@ body {
     margin-top: 15px;
 }
 
+#title {
+    font-size: 40px;
+    float: left;
+    margin-left: 20px;
+}
+
 #floater {
     width: auto;
     height: auto;
@@ -85,12 +94,6 @@ body {
     padding: 5px;
     padding-left: 10px;
     padding-right: 10px;
-}
-
-#title {
-    font-size: 40px;
-    float: left;
-    margin-left: 20px;
 }
 
 #title a:link {text-decoration: none; line-height: 0px; color: #000000;}
