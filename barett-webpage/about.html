@@ -7,72 +7,77 @@
         <link rel="icon" type="image/gif" href="fav.jpg"/>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
         <script>
-            $(function(){
-                hide_all();
+            $(document).ready(function(){
+                function showDiv(){
+                  if($(window).scrollTop() > 400 ){
+                    $("#floater").fadeIn(500);
+                  }
+                  if($(window).scrollTop() < 400){
+                    $("#floater").fadeOut(500);
+                  }
+                };
+                $(window).scroll(showDiv);
+                showDiv();
+                
+                $('#floater').click(function () {
+            $('body,html').animate({
+                scrollTop: 0
+            }, 800);
+            return false;
+        });
             });
-            
-            function doc_drop(){
-                $("#undermenyDoc").show();
-            };
-            
-            function hide_all(){
-                $("#undermenyDoc").hide();
-                $("#undermenyAbout").hide();
-            };
-            
-            function about_drop(){
-                $("#undermenyAbout").show();
-            };
             
         </script>
     </head>
     <body>
-        <div id="wrapper">
-            <div id="top">
-                <div id="title"><a href="index.html">Barett</a></div>
+    <div id="top">
+                
                 <div id="meny">
+                <div id="title"><a href="index.html">Barett</a></div>
                     <ul>
                         <li>
-                            <a href="index.html">Nyheter</a>
+                            <a href="about.html" onmouseover="hide_all(), about_drop()" onmouseout="hide_all()">Projekt information</a>
                         </li>
                         <li>
                             <a href="doc.html" onmouseover="hide_all(), doc_drop()" onmouseout="hide_all()">Documentation</a>
                         </li>
                         <li>
-                            <a href="about.html" onmouseover="hide_all(), about_drop()" onmouseout="hide_all()">Projekt information</a>
+                            <a href="index.html">Nyheter</a>
                         </li>
                     </ul>
                 </div>    
             </div>
+        <div id="wrapper">
+            
             <div id="grabber">
                 <div id"news">
                 <h1>Om oss och projektet</h1>
                 This webbpage is designated to work as a Public flow of Information for
-Robot-Project Barett.</br> 
+Robot-Project Barett.<br> 
 
 The Project is part of the course "IT-projekt, del 2 - Autonoma inbyggda system (IS1204)" held at 
 Kungliga Tekniska Högskolan and involves participants of the course to devide into groups and with
 agile-project-management and Scrum techniques create, develope, test and release a prototype of an
-Autonomous System.</br> 
+Autonomous System.<br> 
 
 The members of the Project Group are students at KTH and are all enrolled in the course 
-Autonoma inbyggda system (IS1204).</br>
+Autonoma inbyggda system (IS1204).<br>
 
 
-    Members of the Crew: </br>
-        Akash (amenon@kth.se)</br>
-        Gustaf (gustaffr@kth.se)</br>
-        Oskar (osda@kth.se)</br>
-        Temin (teminl@kth.se)</br>
-        Nora (noraan@kth.se)</br>
-        Oscar (oscarham@kth.se)</br>
+    Members of the Crew: <br>
+        Akash (amenon@kth.se)<br>
+        Gustaf (gustaffr@kth.se)<br>
+        Oskar (osda@kth.se)<br>
+        Temin (teminl@kth.se)<br>
+        Nora (noraan@kth.se)<br>
+        Oscar (oscarham@kth.se)<br>
 
                 </div>
             </div>
         </div>
         <a href="">
             <div id="floater">
-                Tillbaka upp
+                <img src="up.jpg" alt="Tillbaka upp" style="width: 30px; height: auto;">
             </div>
         </a>
     </body>

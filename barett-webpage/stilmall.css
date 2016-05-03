@@ -1,7 +1,20 @@
 body {
-    background-color: #00a2fe;
+    background-color: #ffffff;
     font-size: 14px;
     font-family: arial, helvetica;
+}
+
+textarea {
+resize: none;
+background-color: #ffffff;
+color: black;
+font-size: 15px;
+font-family: sans-serif, arial, helvetica;
+line-height: 20px;
+border: 0px;
+font-weight: 500;
+float: left;
+margin-top: 10px;
 }
 
 #wrapper {
@@ -14,35 +27,42 @@ body {
 }
 
 #top {
-    width: 960px;
-    height: 50px;
+    width: 100%;
+    height: auto;
     margin-left: auto;
     margin-right: auto;
-    margin-top: -8px;
-    background-color: #ffffff;
+    margin-top: -12px;
     float: left;
     position: fixed;
-    top: 0px
+    top: 0px;
+    border: 0px;
+    border-bottom: 1px;
+    border-style: solid;
+    border-color: #bfbfbf;
+    background-color: #ffffff;
+    padding-bottom: 5px;
 }
 
 #logga {
     width: 125px;
     height: 91px;
     float: left;
-    margin-left: 30px;
+    margin-left: 400px;
     margin-top: 25px;
 }
 
 #meny {
     margin-top: 10px;
-    margin-left: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 960px;
 }
 
 #meny a:link {width: auto; height: auto; padding: 25px; padding-top: 3px; padding-bottom: 3px; color: #000000; text-decoration: none; line-height: 0px; text-transform: none; border-bottom: 0px;}
 #meny a:visited {width: auto; height: auto; padding: 25px; padding-top: 3px; padding-bottom: 3px; color: #000000; text-decoration: none; line-height: 0px; text-transform: none; border-bottom: 0px;}
 #meny a:hover {width: auto; height: auto; padding: 25px; padding-top: 3px; padding-bottom: 3px; color: #000000; text-decoration: none; line-height: 0px; text-transform: none; border-bottom: 0px;}
 #meny a:active {width: auto; height: auto; padding: 25px; padding-top: 3px; padding-bottom: 3px; color: #000000; text-decoration: none; line-height: 0px; text-transform: none; border-bottom: 0px;}
-#meny li {list-style: none; display: inline; float: left; font-family: Trebuchet MS, arial, helvetica; font-size: 16px; margin-left: 5px;}
+#meny li {list-style: none; display: inline; float: right; font-family: "Trebuchet MS", arial, helvetica; font-size: 20px; margin-left: 5px; margin-top: 18px;}
 
 
 #grabber {
@@ -54,7 +74,7 @@ body {
     padding-left: 20px;
     padding-bottom: 15px;
     margin-bottom: 10px;
-    margin-top: 34px;
+    margin-top: 50px;
 }
 
 
@@ -79,7 +99,8 @@ body {
 #title {
     font-size: 40px;
     float: left;
-    margin-left: 20px;
+    padding: 0px;
+    margin-left: -13px;
 }
 
 #floater {
@@ -94,6 +115,7 @@ body {
     padding: 5px;
     padding-left: 10px;
     padding-right: 10px;
+    margin-left: 60px;
 }
 
 #title a:link {text-decoration: none; line-height: 0px; color: #000000;}
@@ -109,4 +131,4 @@ body {
 #github a:visited {width: auto; height: auto; padding: 0px; color: #000000; text-decoration: none; line-height: 0px; text-transform: none; border-bottom: 0px;}
 #github a:hover {width: auto; height: auto; padding: 0px; color: #000000; text-decoration: none; line-height: 0px; text-transform: none; border-bottom: 0px;}
 #github a:active {width: auto; height: auto; padding: 0px;  color: #000000; text-decoration: none; line-height: 0px; text-transform: none; border-bottom: 0px;}
-#github li {list-style: none; display: inline; float: left; font-family: Trebuchet MS, arial, helvetica; font-size: 14px;}
+#github li {list-style: none; display: inline; float: left; font-family: "Trebuchet MS", arial, helvetica; font-size: 14px;}
