@@ -1,0 +1,12 @@
+import random, re
+from client import jasperpath
+
+WORDS= ["JOKES", "GAG","WISECRACK","SHENANIGANS","WHIMSY","PUN","BUFFONERY"]
+
+def handle(text,pic,profile):
+	messages = ["",
+	"",
+	"",
+	"",
+	"",
+	""]

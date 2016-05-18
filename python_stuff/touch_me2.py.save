@@ -1,0 +1,8 @@
+import smbus
+import time
+import logging
+
+class I2CInfo(object):
+
+	def __init__(self, bus, address):
+		

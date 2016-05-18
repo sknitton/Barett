@@ -1,0 +1,17 @@
+import time
+import RPi.GPIO as GPIO
+GPIO.setmode(GPIO.BCM)
+red=11
+GPIO.setup(red,GPIO.OUT
+
+blink_num=input("Hur många blinkningar?")
+
+for i in range (0, blink_num):
+	GPIO.output(red, 1)
+	time.sleep(1)
+	GPIO.output(red,0)
+	time.sleep(1)
+	GPIO.output(red,1)
+	time.sleep(1)
+	GPIO.output(red,0)
+GPIO.cleanup()

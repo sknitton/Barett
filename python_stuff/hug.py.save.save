@@ -1,0 +1,18 @@
+        import RPi.GPIO as GPIO, time
+ 
+        GPIO.setmode(GPIO.BOARD)
+         
+        def Force (RCpin):
+            reading = 0
+            GPIO.setup(RCpin, GPIO.OUT)
+            GPIO.output(RCpin, GPIO.LOW)
+            time.sleep(1)
+         
+            GPIO.setup(RCpin, GPIO.IN)
+            # This takes about 1 millisecond per loop cycle
+            while (GPIO.input(RCpin) == GPIO.LOW):
+                reading += 1
+            return reading
+ 
+        for i in range(0):
+            print Force()
