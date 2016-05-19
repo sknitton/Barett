@@ -80,125 +80,25 @@
             
             <div id="grabber">
                 <div id="news">
-                <h1>Release notes</h1>
-                <h3>Sprint 3</h3>
-                Nu kan björnen förstå ett par ord även om den för tillfället tolkar dom flesta som "hello". Den har även fått en dragkedja på ryggen så vi kan dölja allt samt att den kramar med mjukare rörelser.
-                <h3>Sprint 2</h3>
-                Allt finns nu i björnen! Förutom micken då som kommer nästa sprint. Man kan både klappa den och krama den i en timme innan den börjar närma sig potentiellt farliga temperaturer (för RPi:n).
-                <h3>Sprint 1</h3>
-                <p>Nu kan BB-8 krams så att han spazzar ut samt att om man klappar den så säger den "Mamma! Jag tycker om dig!"!</p>
+                    <h1>Release notes</h1>
+                    <h3>Sprint 4</h3>
+                    Björnen har klarat Turing testet(eller kanske inte) men det går att hålla enklare konversationer om man pratar om sig själv. Det finns även flera kommandon som är: Hello, Morning, Good Night, Bear(Barret , listen), Quiet, Joke och Hungry samt många av deras synonymer.
+                    <h3>Sprint 3</h3>
+                    Nu kan björnen förstå ett par ord även om den för tillfället tolkar dom flesta som "hello". Den har även fått en dragkedja på ryggen så vi kan dölja allt samt att den kramar med mjukare rörelser.
+                    <h3>Sprint 2</h3>
+                    Allt finns nu i björnen! Förutom micken då som kommer nästa sprint. Man kan både klappa den och krama den i en timme innan den börjar närma sig potentiellt farliga temperaturer (för RPi:n).
+                    <h3>Sprint 1</h3>
+                    <p>Nu kan BB-8 krams så att han spazzar ut samt att om man klappar den så säger den "Mamma! Jag tycker om dig!"!</p>
 
-                <h1>Source code</h1>
-                <div id="github">Du kan hitta våra kod <a href="https://github.com/sknitton/Barett">här</a></div>
-                <br>Den senaste versionen av koden finns här under.
-                <div id="code">
-#import lots of stuff<br>
-#GPIO so we can use the GPIO pins<br>
-#Time so that we can use sleep<br>
-#pygame for audio<br>
-#math for modulo<br>
-import RPi.GPIO as GPIO, time, pygame, math<br>
-#configure board<br>
-GPIO.setmode(GPIO.BOARD)<br>
-GPIO.setup(7, GPIO.OUT)<br>
-<br>
-#block is used in the input loops so that it cant get stuck waiting for input<br>
-#reac is the value that reading have to be or lower than for it to trigger<br>
-#expo is a big number that we multiply the angles with to get a smoother curve <br>
-block = 30<br>
-reac = 3*block/10<br>
-expo = 20<br>
-<br>
-#The function for the hugsensor<br>
-def FSRkram():<br>
-    reading = 0<br>
-    #reset the pin<br>
-    GPIO.setup(13, GPIO.OUT)<br>
-    GPIO.output(13, GPIO.LOW)<br>
-    time.sleep(0.25)<br>
-    GPIO.setup(13, GPIO.IN)<br>
-<br>
-    #Gather info to check if its pressed down<br>
-    #The harder you press the FSR the lower reading will be when it returns.<br>
-    while(GPIO.input(13) == GPIO.LOW):<br>
-            reading += 1<br>
-#       print "Krams reading " + str(reading)<br>
-        time.sleep(0.01)<br>
-        #prevent clogging<br>
-            if (reading >= block):<br>
-                    return reading<br>
-    return reading<br>
-<br>
-def FSRpet ():<br>
-    reading = 0<br>
-    #reset the pin<br>
-    GPIO.setup(29, GPIO.OUT)<br>
-    GPIO.output(29, GPIO.LOW)<br>
-    time.sleep(.25)<br>
-    GPIO.setup(29, GPIO.IN)<br>
-<br>
-    #Gather info to check if its pressed down<br>
-    #The harder you press the FSR the lower reading will be when it returns.<br>
-    while (GPIO.input(29) == GPIO.LOW):<br>
-        reading += 1<br>
-#       print "Pets reading: " + str(reading)<br>
-        time.sleep(0.01)<br>
-        #prevent blockings so that it cant clog the function<br>
-            if (reading >= block):<br>
-                return reading<br>
-    return reading<br>
-<br>
-def mainloop():<br>
-        temp = FSRkram()<br>
-        if temp <= reac:<br>
-            #Initiera motorerna och bereätta att vi fått en reaktion<br>
-            print "Kramen reagerade på värdet " + str(temp)<br>
-            pwm=GPIO.PWM(7, 50)<br>
-            pwm.start(7)<br>
-            #(1./18.*vinkel)+2 är formeln för att få reda på vad man vill stoppa in i .ChangeDutyCycle()<br>
-            #.ChangeDutyCycle ändrar armarnas position baserat på formeln över men egentligen beroende på en siffra mellan 2 och 12.<br>
-            #reseta vinkel så att vi förhindrar problem<br>
-            vinkel = 80<br>
-            pwm.ChangeDutyCycle((1./18.*80)+2)<br>
-            #g1 and g2 are the restrics <br>
-            #they are multiplied with expo to get a bigger curve<br>
-            g1 = 50* expo <br>
-            g2 = 80* expo<br>
-            while g1<=g2:<br>
-                #is there so that it only prints once every degree<br>
-                if g2 % expo == 0:<br>
-                    print "Vinkeln är "+ str(g2/expo)<br>
-                pwm.ChangeDutyCycle((1./18.*g2/expo)+2) <br>
-                g2 -= 1<br>
-                time.sleep(0.001)<br>
-            time.sleep(1)<br>
-            #Go back to the natural position<br>
-            pwm.ChangeDutyCycle((1./18.*80)+2)<br>
-            time.sleep(.3)<br>
-            #Rest the engines<br>
-            pwm.stop()<br>
-        temp = FSRpet()<br>
-        if temp <= reac:<br>
-            #Print the reactionary value<br>
-            print "Pet reagerade på " + str(temp)<br>
-            #Initiate the audio player<br>
-            pygame.mixer.init()<br>
-            pygame.mixer.music.load("Mamma.wav.wav")<br>
-            pygame.mixer.music.play()<br>
-            #Keep on playing the file until its done<br>
-            while pygame.mixer.music.get_busy() == True:<br>
-                continue<br>
-            pygame.mixer.quit()<br>
-<br>
-#Loopen<br>
-while True:<br>
-    try:<br>
-        mainloop()<br>
-        time.sleep(0.001)<br>
-    except KeyboardInterrupt:<br>
-        print "Interrupted"<br>
-
-                </div>
+                    <h1>Dokumentation</h1>
+                    <div id="github">Du kan hitta våra kod <a href="https://github.com/sknitton/Barett">här</a>
+                    <br>Du kan hitta våran service manual <a href="Service_Manual.pdf" download="">här</a><br></div>
+                    <h3>Blueprints</h3>
+                    <div id="blueprints">
+                      <img src="blueprint.jpg" alt="Ritning" class="bbild">
+                      <img src="blueprint1.jpg" alt="Komponenter" class="bbild">
+                      <img src="blueprint2.jpg" alt="Elschema" class="bbild">
+                    </div>
                 </div>
             </div>
         </div>

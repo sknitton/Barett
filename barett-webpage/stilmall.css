@@ -180,6 +180,18 @@ img {
     height: auto;
 }
 
+#blueprints{
+    width: 100%;
+    max-width: 960px;
+    height: auto;
+}
+
+.bbild {
+    width: 100%;
+    max-width: 960px;
+    margin-top: 10px;
+}
+
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
     .hbild {
